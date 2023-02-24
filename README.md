@@ -7,6 +7,10 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+## About the project
+Flixflex api is a movies/shows rest api , that allows you to get multiple data about those,also implements a favorites list in which users can add their favorites movies and shows in it , 
+the docs of this api : https://flixflex-api.tessouira.com/docs/
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
