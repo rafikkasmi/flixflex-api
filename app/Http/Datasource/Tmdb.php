@@ -11,7 +11,7 @@ class Tmdb{
     
     static function getAllItems($mediaType ,$page){
         $elementsPage= intdiv($page,2) + $page % 2;
-        $response = Http::get(self::generateURL("discover/$mediaType")."&sort_by=first_air_date.desc&page=$elementsPage");
+        $response = Http::get(self::generateURL("trending/$mediaType/week")."&page=$elementsPage");
         if(!$response->ok()){
             return false;
         }
