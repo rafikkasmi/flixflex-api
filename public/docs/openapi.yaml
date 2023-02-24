@@ -1,0 +1,871 @@
+openapi: 3.0.3
+info:
+  title: 'FlixFlex API Docs'
+  description: ''
+  version: 1.0.0
+servers:
+  -
+    url: 'http://localhost:8000'
+paths:
+  /api/auth/register:
+    post:
+      summary: 'Sign up'
+      operationId: signUp
+      description: 'This endpoint lets you create an account.'
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - 'Authentication Routes'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: ''
+                  example: temporibus
+                email:
+                  type: string
+                  description: 'Must be a valid email address.'
+                  example: oreilly.zena@example.org
+                username:
+                  type: string
+                  description: ''
+                  example: error
+                password:
+                  type: string
+                  description: ''
+                  example: dignissimos
+                cn_password:
+                  type: string
+                  description: 'The value and <code>password</code> must match.'
+                  example: dolores
+              required:
+                - name
+                - email
+                - username
+                - password
+                - cn_password
+      security: []
+  /api/auth/login:
+    post:
+      summary: 'Sign in'
+      operationId: signIn
+      description: 'This endpoint lets you login , and get the auth token.'
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - 'Authentication Routes'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: 'This field is required when <code>username</code> is not present.  Must be a valid email address.'
+                  example: arch80@example.net
+                username:
+                  type: string
+                  description: 'This field is required when <code>email</code> is not present.'
+                  example: null
+                password:
+                  type: string
+                  description: ''
+                  example: rem
+              required:
+                - password
+      security: []
+  /api/favorites/movies:
+    get:
+      summary: ''
+      operationId: getApiFavoritesMovies
+      description: ''
+      parameters:
+        -
+          in: query
+          name: page
+          description: 'Page you wanna get, Defaults to 1.'
+          example: 9
+          required: false
+          schema:
+            type: integer
+            description: 'Page you wanna get, Defaults to 1.'
+            example: 9
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - 'Favorites Management'
+    post:
+      summary: ''
+      operationId: postApiFavoritesMovies
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - 'Favorites Management'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: ''
+                  example: 8
+              required:
+                - id
+  /api/favorites/tv-series:
+    get:
+      summary: ''
+      operationId: getApiFavoritesTvSeries
+      description: ''
+      parameters:
+        -
+          in: query
+          name: page
+          description: 'Page you wanna get, Defaults to 1.'
+          example: 6
+          required: false
+          schema:
+            type: integer
+            description: 'Page you wanna get, Defaults to 1.'
+            example: 6
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - 'Favorites Management'
+    post:
+      summary: ''
+      operationId: postApiFavoritesTvSeries
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - 'Favorites Management'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: ''
+                  example: 1
+              required:
+                - id
+  '/api/favorites/{id}':
+    delete:
+      summary: ''
+      operationId: deleteApiFavoritesId
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - 'Favorites Management'
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the favorite.'
+        example: qui
+        required: true
+        schema:
+          type: string
+  /api/movies:
+    get:
+      summary: 'Get All Movies'
+      operationId: getAllMovies
+      description: 'This endpoint lets you get all movies in batches of 10.'
+      parameters:
+        -
+          in: query
+          name: page
+          description: 'Page you wanna get, Defaults to 1.'
+          example: 18
+          required: false
+          schema:
+            type: integer
+            description: 'Page you wanna get, Defaults to 1.'
+            example: 18
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - 'Movies and Shows Routes'
+  /api/tv-series:
+    get:
+      summary: 'Get All Tv Series'
+      operationId: getAllTvSeries
+      description: 'This endpoint lets you get all tv series in batches of 10.'
+      parameters:
+        -
+          in: query
+          name: page
+          description: 'Page you wanna get, Defaults to 1.'
+          example: 5
+          required: false
+          schema:
+            type: integer
+            description: 'Page you wanna get, Defaults to 1.'
+            example: 5
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - 'Movies and Shows Routes'
+  /api/popular-movies:
+    get:
+      summary: 'Get Popular Movies'
+      operationId: getPopularMovies
+      description: 'This endpoint lets you get top 5 rated movies.'
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - 'Movies and Shows Routes'
+  /api/popular-tv-series:
+    get:
+      summary: 'Get Popular Tv Series'
+      operationId: getPopularTvSeries
+      description: 'This endpoint lets you get top 5 rated tv series.'
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - 'Movies and Shows Routes'
+  '/api/movies/{id}':
+    get:
+      summary: 'Get a Movie'
+      operationId: getAMovie
+      description: 'This endpoint lets you get a movie by it''s id.'
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - 'Movies and Shows Routes'
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the movie.'
+        example: dolorem
+        required: true
+        schema:
+          type: string
+  '/api/tv-series/{id}':
+    get:
+      summary: 'Get a Tv Serie'
+      operationId: getATvSerie
+      description: 'This endpoint lets you get a tv serie by it''s id.'
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - 'Movies and Shows Routes'
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the tv series.'
+        example: quidem
+        required: true
+        schema:
+          type: string
+  '/api/movies/search/{query}':
+    get:
+      summary: 'Search a Movie'
+      operationId: searchAMovie
+      description: 'This endpoint lets you search a movie.'
+      parameters:
+        -
+          in: query
+          name: page
+          description: 'Page you wanna get, Defaults to 1.'
+          example: 4
+          required: false
+          schema:
+            type: integer
+            description: 'Page you wanna get, Defaults to 1.'
+            example: 4
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - 'Movies and Shows Routes'
+    parameters:
+      -
+        in: path
+        name: query
+        description: ''
+        example: a
+        required: true
+        schema:
+          type: string
+  '/api/tv-series/search/{query}':
+    get:
+      summary: 'Search a Tv Serie'
+      operationId: searchATvSerie
+      description: 'This endpoint lets you search a tv serie.'
+      parameters:
+        -
+          in: query
+          name: page
+          description: 'Page you wanna get, Defaults to 1.'
+          example: 20
+          required: false
+          schema:
+            type: integer
+            description: 'Page you wanna get, Defaults to 1.'
+            example: 20
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - 'Movies and Shows Routes'
+    parameters:
+      -
+        in: path
+        name: query
+        description: ''
+        example: iure
+        required: true
+        schema:
+          type: string
+  '/api/movies/{id}/trailer':
+    get:
+      summary: 'Get a Movie trailer'
+      operationId: getAMovieTrailer
+      description: 'This endpoint lets you get a movie''s trailer by its Id.'
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - 'Movies and Shows Routes'
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the movie.'
+        example: possimus
+        required: true
+        schema:
+          type: string
+  '/api/tv-series/{id}/trailer':
+    get:
+      summary: 'Get a Tv Serie trailer'
+      operationId: getATvSerieTrailer
+      description: 'This endpoint lets you get a tv serie''s trailer by its Id.'
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - 'Movies and Shows Routes'
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the tv series.'
+        example: sed
+        required: true
+        schema:
+          type: string
+tags:
+  -
+    name: 'Authentication Routes'
+    description: "\nAPIs for signing up and signing in"
+  -
+    name: 'Favorites Management'
+    description: "\nAPIs for adding, deleting and checking favorites shows and movies"
+  -
+    name: 'Movies and Shows Routes'
+    description: "\nAPIs for getting movies and shows' datas."
+components:
+  securitySchemes:
+    default:
+      type: http
+      scheme: bearer
+      description: ''
+security:
+  -
+    default: []

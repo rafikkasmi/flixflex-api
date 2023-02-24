@@ -1,0 +1,132 @@
+name: 'Authentication Routes'
+description: |-
+
+  APIs for signing up and signing in
+endpoints:
+  -
+    httpMethods:
+      - POST
+    uri: api/auth/register
+    metadata:
+      groupName: 'Authentication Routes'
+      groupDescription: |-
+
+        APIs for signing up and signing in
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Sign up'
+      description: 'This endpoint lets you create an account.'
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: ''
+        required: true
+        example: temporibus
+        type: string
+        custom: []
+      email:
+        name: email
+        description: 'Must be a valid email address.'
+        required: true
+        example: oreilly.zena@example.org
+        type: string
+        custom: []
+      username:
+        name: username
+        description: ''
+        required: true
+        example: error
+        type: string
+        custom: []
+      password:
+        name: password
+        description: ''
+        required: true
+        example: dignissimos
+        type: string
+        custom: []
+      cn_password:
+        name: cn_password
+        description: 'The value and <code>password</code> must match.'
+        required: true
+        example: dolores
+        type: string
+        custom: []
+    cleanBodyParameters:
+      name: temporibus
+      email: oreilly.zena@example.org
+      username: error
+      password: dignissimos
+      cn_password: dolores
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/auth/login
+    metadata:
+      groupName: 'Authentication Routes'
+      groupDescription: |-
+
+        APIs for signing up and signing in
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Sign in'
+      description: 'This endpoint lets you login , and get the auth token.'
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      email:
+        name: email
+        description: 'This field is required when <code>username</code> is not present.  Must be a valid email address.'
+        required: false
+        example: arch80@example.net
+        type: string
+        custom: []
+      username:
+        name: username
+        description: 'This field is required when <code>email</code> is not present.'
+        required: false
+        example: null
+        type: string
+        custom: []
+      password:
+        name: password
+        description: ''
+        required: true
+        example: rem
+        type: string
+        custom: []
+    cleanBodyParameters:
+      email: arch80@example.net
+      password: rem
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
